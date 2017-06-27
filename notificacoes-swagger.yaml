@@ -1,0 +1,71 @@
+#versão do swagger
+swagger: '2.0'
+#informações do projeto
+info:
+  version: 1.0.0
+  title: Notificações
+  description: Api do serviço de aplicações
+  contact:
+    name: Fernando Souza
+    email: fernandosouza.eti@gmail.com
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+    
+# Host    
+host: localhost
+
+# tipo de resposta
+produces:
+  - application/json
+  
+# paths da api
+paths:
+  /api/notificacoes/v1/{idTopico}:
+    post:
+      description: cria uma notificação
+      parameters:
+      - in: path
+        name: idTopico
+        description: identificação do topico da notificação
+        type: string
+        required: true
+      - in: body
+        name: conteudo
+        description: conteudo da notificação
+        schema:
+          $ref: '#/definitions/Notificacao'
+      responses:
+        204:
+          description: Notificação cadastrada
+  /api/notificacoes/v1/{idTopico}/subscribe:
+    post:
+      description: registra que algo que ser notificado quando este topico receber informações
+      parameters:
+      - in: path
+        name: idTopico
+        description: identificação do topico da notificação
+        type: string
+        required: true
+      - in: body
+        name: subscription
+        description: onde esta
+        schema:
+          $ref: '#/definitions/NotificacaoInscricao'
+      responses:
+        204:
+          description: Cadastrado
+# objetos do projeto
+definitions:
+  Notificacao:
+    type: object
+    properties:
+      conteudo:
+        type: string
+        description: conteudo
+  NotificacaoInscricao:
+    type: object
+    properties:
+      url:
+        type: string
+        description: url que será postada a notificação
