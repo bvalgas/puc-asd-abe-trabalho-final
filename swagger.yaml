@@ -1,0 +1,121 @@
+#versão do swagger
+swagger: '2.0'
+#informações do projeto
+info:
+  version: 0.0.0
+  title: title
+  description: description
+  termsOfService: terms
+  contact:
+    name: Fernando Souza
+    email: fernandosouza.eti@gmail.com
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+# Host    
+host: localhost
+# tipo de resposta
+produces:
+  - application/json
+# paths da api
+paths:
+  # listagem de produtos do lojista
+  /lojista/produtos:
+    get:
+      description: Lista os produtos que o lojista possui
+      responses:
+        200:
+          description: Listagem de produtos
+          schema:
+            $ref: "#/definitions/ArrayOfProduto"
+  # pedidos do atacadista
+  /atacadista/pedidos:
+    post:
+      description: Realiza um pedido para o atacadista
+      parameters:
+      - in: body
+        name: pedido
+        description: pedido
+        schema:
+          $ref: "#/definitions/Pedido"
+      responses:
+        200:
+          description: Pedido realizado
+          schema:
+            $ref: "#/definitions/Pedido"
+  /atacadista/pedidos/{idPedido}/orcamento:
+    put:
+      description: cria ou atualiza o orcamento do pedido
+      parameters:
+        - in: path
+          name: idPedido
+          description: identificação do pedido
+        - in: body
+          schema:
+            $ref: '#/definitions/Orcamento'
+  # notificações
+  /notificacoes/{idTopico}:
+    post:
+      description: cria uma notificação
+      parameters:
+      - in: path
+        name: idTopico
+        description: identificação do topico da notificação
+      - in: body
+        name: conteudo
+        description: conteudo da notificação
+        schema:
+          $ref: "#/definitions"
+      responses:
+        200:
+          description: Solicitação cadastrada
+# objetos do projeto
+definitions:
+  # objetos do  lojista
+  Produto:
+    type: object
+    properties:
+      nome:
+        type: string
+        description: Nome do produto
+      estoque:
+        type: integer
+        description: quantidade do item no estoque
+  ArrayOfProduto:
+    type: array
+    items:
+      $ref: "#/definitions/Produto"
+  # objetos do atacadista
+  Pedido:
+    type: object
+    properties:
+      codProduto:
+        type: integer
+        description: identificação do produto
+      qtd:
+        type: integer
+        description: qtd desejada
+      obs:
+        type: string
+        description: Observações
+      estado:
+        type: string
+        description: Estado do pedido
+        enum: 
+        - "Solicitado"
+        - "Em fabricacao"
+        - "Finalizado"
+        - "Despachado"
+  Orcamento:
+    type: object
+    properties:
+      valor:
+        type: float
+        description: Valor do orcamento
+      dataEntrega:
+        type: Date
+        description: Data da entrega prevista
+      aceita:
+        type: boolean
+        description: Aceita pelo cliente
+  
