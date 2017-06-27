@@ -27,7 +27,9 @@ paths:
         200:
           description: Listagem de produtos
           schema:
-            $ref: "#/definitions/ArrayOfProduto"
+            type: array
+            items:
+              $ref: "#/definitions/Produto"
   # pedidos do atacadista
   /atacadista/pedidos:
     post:
@@ -37,7 +39,7 @@ paths:
         name: pedido
         description: pedido
         schema:
-          $ref: "#/definitions/Pedido"
+          $ref: "#/definitions/PedidoCreate"
       responses:
         200:
           description: Pedido realizado
@@ -47,10 +49,18 @@ paths:
     put:
       description: cria ou atualiza o orcamento do pedido
       parameters:
-        - in: path
-          name: idPedido
-          description: identificação do pedido
-        - in: body
+      - in: path
+        name: idPedido
+        description: identificação do pedido
+        required: true
+        type: string
+      - in: body
+        name: orcamento
+        schema:
+          $ref: '#/definitions/OrcamentoUpdate'  
+      responses:
+        200:
+          description: Orcamento definido
           schema:
             $ref: '#/definitions/Orcamento'
   # notificações
@@ -61,18 +71,21 @@ paths:
       - in: path
         name: idTopico
         description: identificação do topico da notificação
+        type: string
+        required: true
       - in: body
         name: conteudo
         description: conteudo da notificação
         schema:
-          $ref: "#/definitions"
+          $ref: '#/definitions/Notificacao'
       responses:
-        200:
-          description: Solicitação cadastrada
+        204:
+          description: Notificação cadastrada
+          
 # objetos do projeto
 definitions:
   # objetos do  lojista
-  Produto:
+  ProdutoCreate:
     type: object
     properties:
       nome:
@@ -80,15 +93,56 @@ definitions:
         description: Nome do produto
       estoque:
         type: integer
+        description: Quantidade no estoque
+  Produto:
+    type: object
+    properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: Url para o recurso
+      id:
+        type: integer
+        description: identificação do produto
+      nome:
+        type: string
+        description: Nome do produto
+      estoque:
+        type: integer
         description: quantidade do item no estoque
-  ArrayOfProduto:
-    type: array
-    items:
-      $ref: "#/definitions/Produto"
   # objetos do atacadista
+  PedidoCreate:
+    type: object
+    properties:
+      codProduto:
+        type: integer
+        description: identificação do produto
+      qtd:
+        type: integer
+        description: qtd desejada
+      obs:
+        type: string
+        description: Observações
   Pedido:
     type: object
     properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: link para o recurso
+          orcamento:
+            type: string
+            description: link para o orcamento
+          produto:
+            type: string
+            description: link para o produto
+      id:
+        type: integer
+        description: Identificação do pedido
       codProduto:
         type: integer
         description: identificação do produto
@@ -106,16 +160,46 @@ definitions:
         - "Em fabricacao"
         - "Finalizado"
         - "Despachado"
-  Orcamento:
+  OrcamentoUpdate:
     type: object
     properties:
       valor:
-        type: float
+        type: number
+        description: Valor do orcamento
+        format: float
+      dataEntrega:
+        type: string
+        description: Data da entrega prevista
+        format: date
+      aceita:
+        type: boolean
+        description: Aceita pelo cliente
+  Orcamento:
+    type: object
+    properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: Endereço para este orcamento
+          pedido:
+            type: string
+            description: Endereço para o pedido
+      valor:
+        type: number
+        format: float
         description: Valor do orcamento
       dataEntrega:
-        type: Date
+        type: string
+        format: date
         description: Data da entrega prevista
       aceita:
         type: boolean
         description: Aceita pelo cliente
-  
+  Notificacao:
+    type: object
+    properties:
+      conteudo:
+        type: string
+        description: conteudo
