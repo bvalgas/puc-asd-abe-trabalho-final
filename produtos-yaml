@@ -1,0 +1,77 @@
+#versão do swagger
+swagger: '2.0'
+#informações do projeto
+info:
+  version: 1.0.0
+  title: Produtos
+  description: Api de produtos
+  contact:
+    name: Fernando Souza
+    email: fernandosouza.eti@gmail.com
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+    
+# Host    
+host: localhost
+
+# tipo de resposta
+produces:
+  - application/json
+  
+# paths da api
+paths:
+  /api/produtos/v1/produtos:
+    post:
+      description: cria novo produto
+      parameters:
+      - in: body
+        name: produto
+        description: Produto
+        schema:
+          $ref: '#/definitions/ProdutoCreate'
+      responses:
+        200:
+          description: produto cadastrado
+          schema:
+            $ref: '#/definitions/Produto'
+    get:
+      description: Lista os produtos que o lojista possui
+      responses:
+        200:
+          description: Listagem de produtos
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Produto"
+              
+# objetos do projeto
+definitions:
+  # objetos do  lojista
+  ProdutoCreate:
+    type: object
+    properties:
+      nome:
+        type: string
+        description: Nome do produto
+      estoque:
+        type: integer
+        description: Quantidade no estoque
+  Produto:
+    type: object
+    properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: Url para o recurso
+      id:
+        type: integer
+        description: identificação do produto
+      nome:
+        type: string
+        description: Nome do produto
+      estoque:
+        type: integer
+        description: quantidade do item no estoque
