@@ -1,0 +1,160 @@
+#versão do swagger
+swagger: '2.0'
+#informações do projeto
+info:
+  version: 0.0.0
+  title: Pedidos
+  description: Api de gerencia de pedidos
+  contact:
+    name: Fernando Souza
+    email: fernandosouza.eti@gmail.com
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+    
+# Host    
+host: localhost
+
+# tipo de resposta
+produces:
+  - application/json
+  
+# paths da api
+paths:
+  # pedidos do atacadista
+  /api/pedidos/v1/pedidos:
+    post:
+      description: Realiza um pedido para o atacadista
+      parameters:
+      - in: body
+        name: pedido
+        description: pedido
+        schema:
+          $ref: "#/definitions/PedidoCreate"
+      responses:
+        200:
+          description: Pedido realizado
+          schema:
+            $ref: "#/definitions/Pedido"
+  /api/pedidos/v1/pedidos/{idPedido}:
+    get:
+      description: Dados de um pedido
+      parameters:
+      - in: path
+        name: idPedido
+        description: Identificação do pedido
+        type: string
+        required: true
+      responses:
+        200:
+          description: Dados do pedido
+          schema:
+            $ref: '#/definitions/Pedido'
+        404:
+          description: Pedido não encontrado
+  /api/pedidos/v1/pedidos/{idPedido}/orcamento:
+    put:
+      description: cria ou atualiza o orcamento do pedido
+      parameters:
+      - in: path
+        name: idPedido
+        description: identificação do pedido
+        required: true
+        type: string
+      - in: body
+        name: orcamento
+        schema:
+          $ref: '#/definitions/OrcamentoUpdate'  
+      responses:
+        200:
+          description: Orcamento definido
+          schema:
+            $ref: '#/definitions/Orcamento'
+  
+# objetos do projeto
+definitions:
+  # objetos do atacadista
+  PedidoCreate:
+    type: object
+    properties:
+      codProduto:
+        type: integer
+        description: identificação do produto
+      qtd:
+        type: integer
+        description: qtd desejada
+      obs:
+        type: string
+        description: Observações
+  Pedido:
+    type: object
+    properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: link para o recurso
+          orcamento:
+            type: string
+            description: link para o orcamento
+          produto:
+            type: string
+            description: link para o produto
+      id:
+        type: integer
+        description: Identificação do pedido
+      codProduto:
+        type: integer
+        description: identificação do produto
+      qtd:
+        type: integer
+        description: qtd desejada
+      obs:
+        type: string
+        description: Observações
+      estado:
+        type: string
+        description: Estado do pedido
+        enum: 
+        - "Solicitado"
+        - "Em fabricacao"
+        - "Finalizado"
+        - "Despachado"
+  OrcamentoUpdate:
+    type: object
+    properties:
+      valor:
+        type: number
+        description: Valor do orcamento
+        format: float
+      dataEntrega:
+        type: string
+        description: Data da entrega prevista
+        format: date
+      aceita:
+        type: boolean
+        description: Aceita pelo cliente
+  Orcamento:
+    type: object
+    properties:
+      _links:
+        type: object
+        properties:
+          self:
+            type: string
+            description: Endereço para este orcamento
+          pedido:
+            type: string
+            description: Endereço para o pedido
+      valor:
+        type: number
+        format: float
+        description: Valor do orcamento
+      dataEntrega:
+        type: string
+        format: date
+        description: Data da entrega prevista
+      aceita:
+        type: boolean
+        description: Aceita pelo cliente
