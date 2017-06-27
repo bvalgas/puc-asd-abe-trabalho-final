@@ -21,6 +21,19 @@ produces:
 paths:
   # listagem de produtos do lojista
   /lojista/produtos:
+    post:
+      description: cria novo produto
+      parameters:
+      - in: body
+        name: produto
+        description: Produto
+        schema:
+          $ref: '#/definitions/ProdutoCreate'
+      responses:
+        200:
+          description: produto cadastrado
+          schema:
+            $ref: '#/definitions/Produto'
     get:
       description: Lista os produtos que o lojista possui
       responses:
@@ -45,6 +58,22 @@ paths:
           description: Pedido realizado
           schema:
             $ref: "#/definitions/Pedido"
+  /atacadista/pedidos/{idPedido}:
+    get:
+      description: Dados de um pedido
+      parameters:
+      - in: path
+        name: idPedido
+        description: Identificação do pedido
+        type: string
+        required: true
+      responses:
+        200:
+          description: Dados do pedido
+          schema:
+            $ref: '#/definitions/Pedido'
+        404:
+          description: Pedido não encontrado
   /atacadista/pedidos/{idPedido}/orcamento:
     put:
       description: cria ou atualiza o orcamento do pedido
@@ -81,7 +110,23 @@ paths:
       responses:
         204:
           description: Notificação cadastrada
-          
+  /notificacoes/{idTopico}/subscribe:
+    post:
+      description: registra que algo que ser notificado quando este topico receber informações
+      parameters:
+      - in: path
+        name: idTopico
+        description: identificação do topico da notificação
+        type: string
+        required: true
+      - in: body
+        name: subscription
+        description: onde esta
+        schema:
+          $ref: '#/definitions/NotificacaoInscricao'
+      responses:
+        204:
+          description: Cadastrado
 # objetos do projeto
 definitions:
   # objetos do  lojista
@@ -203,3 +248,9 @@ definitions:
       conteudo:
         type: string
         description: conteudo
+  NotificacaoInscricao:
+    type: object
+    properties:
+      url:
+        type: string
+        description: url que será postada a notificação
