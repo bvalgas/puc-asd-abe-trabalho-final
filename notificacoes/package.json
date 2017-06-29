@@ -1,0 +1,23 @@
+{
+  "name": "notifica-es",
+  "version": "1.0.0",
+  "description": "Api do serviço de aplicações",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "connect": "^3.6.2",
+    "js-yaml": "^3.8.4",
+    "mongoose": "^4.11.0",
+    "request": "^2.81.0",
+    "swagger-tools": "^0.10.1"
+  }
+}

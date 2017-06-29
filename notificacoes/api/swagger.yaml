@@ -1,0 +1,86 @@
+---
+swagger: "2.0"
+info:
+  description: "Api do serviço de aplicações"
+  version: "1.0.0"
+  title: "Notificações"
+  contact:
+    name: "Fernando Souza"
+    email: "fernandosouza.eti@gmail.com"
+  license:
+    name: "MIT"
+    url: "http://opensource.org/licenses/MIT"
+host: "localhost:8080"
+produces:
+- "application/json"
+paths:
+  /api/notificacoes/v1/{idTopico}:
+    post:
+      description: "cria uma notificação"
+      operationId: "apiNotificacoesV1IdTopicoPOST"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idTopico"
+        in: "path"
+        description: "identificação do topico da notificação"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "conteudo"
+        description: "conteudo da notificação"
+        required: false
+        schema:
+          $ref: "#/definitions/conteudo"
+      responses:
+        204:
+          description: "Notificação cadastrada"
+      x-swagger-router-controller: "Default"
+  /api/notificacoes/v1/{idTopico}/subscribe:
+    post:
+      description: "registra que algo que ser notificado quando este topico receber\
+        \ informações"
+      operationId: "apiNotificacoesV1IdTopicoSubscribePOST"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idTopico"
+        in: "path"
+        description: "identificação do topico da notificação"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "subscription"
+        description: "onde esta"
+        required: false
+        schema:
+          $ref: "#/definitions/subscription"
+      responses:
+        204:
+          description: "Cadastrado"
+      x-swagger-router-controller: "Default"
+definitions:
+  Notificacao:
+    type: "object"
+    properties:
+      conteudo:
+        type: "string"
+        description: "conteudo"
+  NotificacaoInscricao:
+    type: "object"
+    properties:
+      url:
+        type: "string"
+        description: "url que será postada a notificação"
+  conteudo:
+    type: "object"
+    properties:
+      conteudo:
+        type: "string"
+        description: "conteudo"
+  subscription:
+    type: "object"
+    properties:
+      url:
+        type: "string"
+        description: "url que será postada a notificação"
