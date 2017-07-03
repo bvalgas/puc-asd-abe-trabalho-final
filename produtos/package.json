@@ -1,0 +1,21 @@
+{
+  "name": "produtos",
+  "version": "1.0.0",
+  "description": "Api de produtos",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.6.2",
+    "js-yaml": "^3.8.4",
+    "mongoose": "^4.11.1",
+    "swagger-tools": "^0.10.1"
+  }
+}

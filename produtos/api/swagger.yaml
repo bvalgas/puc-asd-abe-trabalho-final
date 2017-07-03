@@ -1,0 +1,100 @@
+---
+swagger: "2.0"
+info:
+  description: "Api de produtos"
+  version: "1.0.0"
+  title: "Produtos"
+  contact:
+    name: "Fernando Souza"
+    email: "fernandosouza.eti@gmail.com"
+  license:
+    name: "MIT"
+    url: "http://opensource.org/licenses/MIT"
+host: "localhost"
+produces:
+- "application/json"
+paths:
+  /api/produtos/v1/produtos:
+    get:
+      description: "Lista os produtos que o lojista possui"
+      operationId: "apiProdutosV1ProdutosGET"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Listagem de produtos"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "cria novo produto"
+      operationId: "apiProdutosV1ProdutosPOST"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "produto"
+        description: "Produto"
+        required: false
+        schema:
+          $ref: "#/definitions/produto"
+      responses:
+        200:
+          description: "produto cadastrado"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "Default"
+definitions:
+  ProdutoCreate:
+    type: "object"
+    properties:
+      nome:
+        type: "string"
+        description: "Nome do produto"
+      estoque:
+        type: "integer"
+        description: "Quantidade no estoque"
+  Produto:
+    type: "object"
+    properties:
+      _links:
+        $ref: "#/definitions/apiprodutosv1produtos__links"
+      id:
+        type: "integer"
+        description: "identificação do produto"
+      nome:
+        type: "string"
+        description: "Nome do produto"
+      estoque:
+        type: "integer"
+        description: "quantidade do item no estoque"
+  apiprodutosv1produtos__links:
+    properties:
+      self:
+        type: "string"
+        description: "Url para o recurso"
+  inline_response_200:
+    properties:
+      _links:
+        $ref: "#/definitions/apiprodutosv1produtos__links"
+      id:
+        type: "integer"
+        description: "identificação do produto"
+      nome:
+        type: "string"
+        description: "Nome do produto"
+      estoque:
+        type: "integer"
+        description: "quantidade do item no estoque"
+  produto:
+    type: "object"
+    properties:
+      nome:
+        type: "string"
+        description: "Nome do produto"
+      estoque:
+        type: "integer"
+        description: "Quantidade no estoque"
