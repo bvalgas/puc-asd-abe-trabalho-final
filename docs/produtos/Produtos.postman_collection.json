@@ -1,0 +1,81 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Produtos",
+		"_postman_id": "136b3752-8c56-c5ef-39c6-60235f52437d",
+		"description": "Api de produtos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"description": "Folder for api",
+			"item": [
+				{
+					"name": "http://localhost/api/produtos/v1/produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/produtos/v1/produtos",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Lista os produtos que o lojista possui"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/api/produtos/v1/produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/produtos/v1/produtos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Novo produto\",\n\t\"estoque\": 1\n}"
+						},
+						"description": "cria novo produto"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
