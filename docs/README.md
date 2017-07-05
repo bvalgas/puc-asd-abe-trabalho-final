@@ -23,3 +23,7 @@ na pasta `./produtos/` execute o comando `docker build . -t produtos` para criar
 Para execução, alem dos 3 serviços principais de nossa aplicação, subimos também o mongodb, isso tudo configurado por um composer docker que irá fazer esse vinculo para nós.
 
 para executar os serviços execute `docker-compose up` na pasta raiz do projeto.
+
+## Testes de unidade
+
+As pastas `notificacoes`, `pedidos` e `produtos` desta pasta contem arquivos `**.postman_collection.json` que são os arquivos que configuram nossos testes unitários. nestas pastas também temos os resultados concretos da ultima execução dos mesmos
