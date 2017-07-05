@@ -1,6 +1,6 @@
 'use strict';
 
-const request = require('request')
+//const request = require('request')
 const Inscricao = require('./../models/inscricao')
 
 exports.apiNotificacoesV1IdTopicoPOST = function (args, res, next) {
