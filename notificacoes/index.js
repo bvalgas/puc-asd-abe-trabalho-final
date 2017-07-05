@@ -8,7 +8,7 @@ var fs = require('fs');
 var serverPort = 8080;
 var mongoose = require('mongoose')
 
-mongoose.connect("mongodb://localhost/notificacoes")
+mongoose.connect("mongodb://mongo/notificacoes")
 
 // swaggerRouter configuration
 var options = {
