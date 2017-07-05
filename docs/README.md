@@ -34,7 +34,7 @@ As pastas `notificacoes`, `pedidos` e `produtos` desta pasta contem arquivos `**
 
 Gerencia os pedidos de um atacadista
 
-documento do swagger disponivel em `./pedidos-swagger.yaml` ou atravez do link do serviço [http://localhost:5000/swagger/]
+documento do swagger disponivel em `./pedidos-swagger.yaml` ou atravez do link do serviço [http://localhost:5000/swagger/](http://localhost:5000/swagger/)
 
 ### notificacoes
 
