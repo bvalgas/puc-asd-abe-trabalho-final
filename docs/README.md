@@ -6,17 +6,17 @@ Instruções para criação das imagens docker e instruções para execução da
 
 ### pedidos
 
-na pasta `./Pedidos/` execute os comandos `dotnet restore`, `dotnet build`, `dotnet publish -o out` estes comandos irão criar os executaveis do projeto dotnet para a plataforma especifica.
+na pasta `/Pedidos/` execute os comandos `dotnet restore`, `dotnet build`, `dotnet publish -o out` estes comandos irão criar os executaveis do projeto dotnet para a plataforma especifica.
 
 sem seguida execute o comando `docker build . -t pedidos` para criar a imagem de pedidos
 
 ### notificacoes
 
-na pasta `./notificacoes/` execute o comando `docker build . -t notificacoes` para criar a imagem do serviço de notificações.
+na pasta `/notificacoes/` execute o comando `docker build . -t notificacoes` para criar a imagem do serviço de notificações.
 
 ### produtos
 
-na pasta `./produtos/` execute o comando `docker build . -t produtos` para criar a imagem do servico de produtos
+na pasta `/produtos/` execute o comando `docker build . -t produtos` para criar a imagem do servico de produtos
 
 ## Executando
 
