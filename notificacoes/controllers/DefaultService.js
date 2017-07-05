@@ -45,8 +45,9 @@ exports.apiNotificacoesV1IdTopicoSubscribePOST = function (args, res, next) {
             res.end();
         })
         .catch(e => {
-            res.statusCode = 500;
-            res.end(e);
+            console.log(e)
+            res.statusCode = 204;
+            res.end();
         })
 }
 
