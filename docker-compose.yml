@@ -2,11 +2,15 @@ version: "2"
 services:
   produtos:
     image: produtos
+    ports:
+      - "8090:8090"
     links:
       - mongo
 
   notificacoes:
     image: notificacoes
+    ports:
+      - "8080:8080"
     links:
       - mongo
 
