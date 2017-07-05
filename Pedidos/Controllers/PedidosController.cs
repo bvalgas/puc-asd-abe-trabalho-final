@@ -36,7 +36,7 @@ namespace Pedidos.Controllers
             return new JsonResult(_context.Pedidos.SingleOrDefault(x => x.id == id));
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}/orcamento")]
         public JsonResult Put(int id, [FromBody]OrcamentoUpdade orcamento)
         {
             var pedido = _context.Pedidos.SingleOrDefault(x => x.id == id);
