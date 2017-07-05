@@ -40,10 +40,10 @@ documento do swagger disponivel em `./pedidos-swagger.yaml` ou atravez do link d
 
 Troca de notificações entre as aplicações
 
-documento swagger disponivel em `./notificacoes-swagger.yaml` ou através do link do servico [http://localhost:8080/docs/]
+documento swagger disponivel em `./notificacoes-swagger.yaml` ou através do link do servico [http://localhost:8080/docs/](http://localhost:8080/docs/)
 
 ### produtos
 
 Produtos do lojista
 
-documento swagger disponivel em `./produtos-swagger.yaml` ou através do link do serviço [http://localhost:8090/docs/]
+documento swagger disponivel em `./produtos-swagger.yaml` ou através do link do serviço [http://localhost:8090/docs/](http://localhost:8090/docs/)
