@@ -26,10 +26,7 @@ namespace Pedidos.Controllers
             var novoPedido = new Pedido { codProduto = pedido.codProduto, qtd = pedido.qtd, obs = pedido.obs };
             _context.Pedidos.Add(novoPedido);
             _context.SaveChanges();
-            WebRequest request = WebRequest.Create("http://localhost/api/notificacoes/v1/pedido-cadastrado");
-            request.Credentials = CredentialCache.DefaultCredentials;
             
-            WebResponse response = await request.GetResponseAsync();
             return new JsonResult(novoPedido);
         }
 
