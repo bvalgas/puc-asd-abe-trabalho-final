@@ -1,0 +1,21 @@
+version: "2"
+services:
+  produtos:
+    image: produtos
+    links:
+      - mongo
+
+  notificacoes:
+    image: notificacoes
+    links:
+      - mongo
+
+  pedidos:
+    image: pedidos
+    ports:
+      - "5000:5000"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
