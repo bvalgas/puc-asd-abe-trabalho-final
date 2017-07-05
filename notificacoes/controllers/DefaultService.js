@@ -17,9 +17,9 @@ exports.apiNotificacoesV1IdTopicoPOST = function (args, res, next) {
             // dados a serem enviados
             var payload = querystring.stringify(args.conteudo.value)
             list.forEach((incricao, idx) => {
-                request
-                    .post(incricao.url)
-                    .form(payload)
+                //request
+                //    .post(incricao.url)
+                //    .form(payload)
             })
         })
 
