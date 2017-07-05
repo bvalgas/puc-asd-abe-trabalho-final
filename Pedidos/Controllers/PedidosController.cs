@@ -26,9 +26,12 @@ namespace Pedidos.Controllers
             var novoPedido = new Pedido { codProduto = pedido.codProduto, qtd = pedido.qtd, obs = pedido.obs };
        
             _context.Pedidos.Add(novoPedido);
-            novoPedido._links = new LinksPedido { self = "http://localhost:5000/api/pedidos/v1/Pedidos/" + novoPedido.id };
-            _context.Pedidos.Add(novoPedido);
-
+            _context.SaveChanges();
+            novoPedido = _context.Pedidos.Single(x => x.id == novoPedido.id);
+            novoPedido._links = new LinksPedido { self = "http://localhost:5000/api/pedidos/v1/Pedidos/" + novoPedido.id,
+            orcamento = "http://localhost:5000/api/pedidos/v1/Pedidos/" + novoPedido.id + "/orcamento",
+            produto = "http://localhost:8090/api/produtos/v1/produtos/"+ novoPedido.codProduto
+            };
             _context.SaveChanges();
             
             return new JsonResult(novoPedido);
@@ -37,7 +40,17 @@ namespace Pedidos.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            return new JsonResult(_context.Pedidos.SingleOrDefault(x => x.id == id));
+            var pedido = _context.Pedidos.SingleOrDefault(x => x.id == id);
+            if(pedido != null)
+            {
+                pedido._links = new LinksPedido
+                {
+                    self = "http://localhost:5000/api/pedidos/v1/Pedidos/" + pedido.id,
+                    orcamento = "http://localhost:5000/api/pedidos/v1/Pedidos/" + pedido.id + "/orcamento",
+                    produto = "http://localhost:8090/api/produtos/v1/produtos/" + pedido.codProduto
+                };
+            }
+            return new JsonResult(pedido);
         }
 
         [HttpPut("{id}/orcamento")]
@@ -48,7 +61,9 @@ namespace Pedidos.Controllers
             {
                 pedido.orcamento = new Orcamento { aceita = orcamento.aceita, dataEntrega = orcamento.dataEntrega, valor = orcamento.valor };
                 _context.SaveChanges();
-                pedido.orcamento._links = new LinksOrcamento { pedido = "http://localhost:5000/api/pedidos/v1/Pedidos/" + pedido.id };
+                pedido.orcamento._links = new LinksOrcamento { pedido = "http://localhost:5000/api/pedidos/v1/Pedidos/" + pedido.id,
+                self = "http://localhost:5000/api/pedidos/v1/Pedidos/" + pedido.id + "/orcamento",
+                };
                 _context.SaveChanges();
 
                 return new JsonResult(pedido.orcamento);
