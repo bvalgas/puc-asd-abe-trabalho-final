@@ -13,6 +13,17 @@
 			"item": [
 				{
 					"name": "http://localhost:8090/api/produtos/v1/produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:8090/api/produtos/v1/produtos",
 						"method": "GET",
@@ -30,6 +41,17 @@
 				},
 				{
 					"name": "http://localhost:8090/api/produtos/v1/produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:8090/api/produtos/v1/produtos",
 						"method": "POST",

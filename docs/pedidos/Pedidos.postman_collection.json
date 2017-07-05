@@ -13,6 +13,17 @@
 			"item": [
 				{
 					"name": "http://localhost:5000/api/pedidos/v1/pedidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:5000/api/pedidos/v1/Pedidos",
 						"method": "POST",
@@ -38,6 +49,17 @@
 				},
 				{
 					"name": "http://localhost:5000/api/pedidos/v1/pedidos/:idPedido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:5000/api/pedidos/v1/pedidos/3",
 						"method": "GET",
@@ -55,8 +77,19 @@
 				},
 				{
 					"name": "http://localhost:5000/api/pedidos/v1/pedidos/:idPedido/orcamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
-						"url": "http://localhost:5000/api/pedidos/v1/pedidos/3/orcamento",
+						"url": "http://localhost:5000/api/pedidos/v1/pedidos/1/orcamento",
 						"method": "PUT",
 						"header": [
 							{

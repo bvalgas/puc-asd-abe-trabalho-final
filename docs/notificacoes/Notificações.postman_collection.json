@@ -13,6 +13,17 @@
 			"item": [
 				{
 					"name": "http://localhost:8080/api/notificacoes/v1/:idTopico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:8080/api/notificacoes/v1/nome-do-topico",
 						"method": "POST",
@@ -33,6 +44,17 @@
 				},
 				{
 					"name": "http://localhost:8080/api/notificacoes/v1/:idTopico/subscribe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "http://localhost:8080/api/notificacoes/v1/topico-de-alguma-coisa/subscribe",
 						"method": "POST",
