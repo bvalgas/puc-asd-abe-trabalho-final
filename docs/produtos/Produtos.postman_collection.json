@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Produtos",
-		"_postman_id": "136b3752-8c56-c5ef-39c6-60235f52437d",
+		"_postman_id": "96ce1493-b21b-b4eb-5495-855a4254224c",
 		"description": "Api de produtos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -12,20 +12,9 @@
 			"description": "Folder for api",
 			"item": [
 				{
-					"name": "http://localhost/api/produtos/v1/produtos",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								]
-							}
-						}
-					],
+					"name": "http://localhost:8090/api/produtos/v1/produtos",
 					"request": {
-						"url": "http://localhost:8080/api/produtos/v1/produtos",
+						"url": "http://localhost:8090/api/produtos/v1/produtos",
 						"method": "GET",
 						"header": [
 							{
@@ -40,36 +29,20 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost/api/produtos/v1/produtos",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								]
-							}
-						}
-					],
+					"name": "http://localhost:8090/api/produtos/v1/produtos",
 					"request": {
-						"url": "http://localhost:8080/api/produtos/v1/produtos",
+						"url": "http://localhost:8090/api/produtos/v1/produtos",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "application/json",
 								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Novo produto\",\n\t\"estoque\": 1\n}"
+							"raw": "Produto"
 						},
 						"description": "cria novo produto"
 					},

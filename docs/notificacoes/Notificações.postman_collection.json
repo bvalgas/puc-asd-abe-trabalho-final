@@ -1,0 +1,62 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Notificações",
+		"_postman_id": "3be959bf-f020-2cf5-0766-a2d5ef5cec37",
+		"description": "Api do serviço de aplicações",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"description": "Folder for api",
+			"item": [
+				{
+					"name": "http://localhost:8080/api/notificacoes/v1/:idTopico",
+					"request": {
+						"url": "http://localhost:8080/api/notificacoes/v1/nome-do-topico",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "conteudo da notificação"
+						},
+						"description": "cria uma notificação"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/notificacoes/v1/:idTopico/subscribe",
+					"request": {
+						"url": "http://localhost:8080/api/notificacoes/v1/topico-de-alguma-coisa/subscribe",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"url\": \"bads\"\n}\n"
+						},
+						"description": "registra que algo que ser notificado quando este topico receber informações"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

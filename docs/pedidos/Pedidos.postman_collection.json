@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pedidos",
+		"_postman_id": "fff3792f-e06e-94e5-67ae-f1b210dab725",
+		"description": "Api de gerencia de pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"description": "Folder for api",
+			"item": [
+				{
+					"name": "http://localhost:5000/api/pedidos/v1/pedidos",
+					"request": {
+						"url": "http://localhost:5000/api/pedidos/v1/Pedidos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codProduto\": 0,\r\n  \"qtd\": 0,\r\n  \"obs\": \"string\"\r\n}"
+						},
+						"description": "Realiza um pedido para o atacadista"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/api/pedidos/v1/pedidos/:idPedido",
+					"request": {
+						"url": "http://localhost:5000/api/pedidos/v1/pedidos/3",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Dados de um pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/api/pedidos/v1/pedidos/:idPedido/orcamento",
+					"request": {
+						"url": "http://localhost:5000/api/pedidos/v1/pedidos/3/orcamento",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valor\": 0,\r\n  \"dataEntrega\": \"string\",\r\n  \"aceita\": true\r\n}"
+						},
+						"description": "cria ou atualiza o orcamento do pedido"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
