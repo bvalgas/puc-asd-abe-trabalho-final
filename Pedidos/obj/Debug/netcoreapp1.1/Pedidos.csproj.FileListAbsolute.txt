@@ -1,0 +1,9 @@
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\bin\Debug\netcoreapp1.1\Pedidos.deps.json
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\bin\Debug\netcoreapp1.1\Pedidos.runtimeconfig.json
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\bin\Debug\netcoreapp1.1\Pedidos.runtimeconfig.dev.json
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\bin\Debug\netcoreapp1.1\Pedidos.dll
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\bin\Debug\netcoreapp1.1\Pedidos.pdb
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\obj\Debug\netcoreapp1.1\Pedidos.csprojResolveAssemblyReference.cache
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\obj\Debug\netcoreapp1.1\Pedidos.AssemblyInfo.cs
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\obj\Debug\netcoreapp1.1\Pedidos.dll
+C:\Users\bruno\documents\visual studio 2017\Projects\Pedidos\Pedidos\obj\Debug\netcoreapp1.1\Pedidos.pdb
