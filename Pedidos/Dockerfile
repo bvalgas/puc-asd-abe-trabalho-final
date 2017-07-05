@@ -1,7 +1,5 @@
-FROM microsoft/aspnetcore:1.1
-ARG source
-WORKDIR /app
+FROM microsoft/dotnet:runtime
+WORKDIR /dotnetapp
+COPY out .
 EXPOSE 5000
-COPY ${source:-obj/Docker/publish} .
 ENTRYPOINT ["dotnet", "Pedidos.dll"]
-
