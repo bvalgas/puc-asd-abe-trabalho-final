@@ -7,10 +7,10 @@ var jsyaml = require('js-yaml');
 var fs = require('fs');
 var mongoose = require('mongoose')
 
-var serverPort = 8080;
+var serverPort = 8090;
 
 // conecta ao mongoose
-mongoose.connect("mongodb://localhost/produtos")
+mongoose.connect("mongodb://mongo/produtos")
 
 // swaggerRouter configuration
 var options = {
