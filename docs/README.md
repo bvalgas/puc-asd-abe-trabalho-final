@@ -27,3 +27,23 @@ para executar os serviços execute `docker-compose up` na pasta raiz do projeto.
 ## Testes de unidade
 
 As pastas `notificacoes`, `pedidos` e `produtos` desta pasta contem arquivos `**.postman_collection.json` que são os arquivos que configuram nossos testes unitários. nestas pastas também temos os resultados concretos da ultima execução dos mesmos
+
+## Serviços
+
+### pedidos
+
+Gerencia os pedidos de um atacadista
+
+documento do swagger disponivel em `./pedidos-swagger.yaml` ou atravez do link do serviço [http://localhost:5000/swagger/]
+
+### notificacoes
+
+Troca de notificações entre as aplicações
+
+documento swagger disponivel em `./notificacoes-swagger.yaml` ou através do link do servico [http://localhost:8080/docs/]
+
+### produtos
+
+Produtos do lojista
+
+documento swagger disponivel em `./produtos-swagger.yaml` ou através do link do serviço [http://localhost:8090/docs/]
